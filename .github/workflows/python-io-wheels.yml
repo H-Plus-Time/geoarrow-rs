@@ -31,7 +31,7 @@ jobs:
           rust-toolchain: nightly
           target: ${{ matrix.target }}
           manylinux: manylinux_2_28
-          args: --release --out dist -i 3.9 -i 3.10 -i 3.11 -i 3.12 -i 3.13 -m python/geoarrow-io/Cargo.toml
+          args: --release --out dist -i 3.9 -i 3.10 -i 3.11 -i 3.12 -i 3.13 -i 3.13t -m python/geoarrow-io/Cargo.toml
           before-script-linux: |
             yum update -y
             yum install openssl openssl-devel perl-IPC-Cmd -y
@@ -121,7 +121,7 @@ jobs:
         with:
           rust-toolchain: nightly
           target: ${{ matrix.platform.target }}
-          args: --release --out dist -i 3.9 -i 3.10 -i 3.11 -i 3.12 -i 3.13 -m python/geoarrow-io/Cargo.toml
+          args: --release --out dist -i 3.9 -i 3.10 -i 3.11 -i 3.12 -i 3.13 -i 3.13t -m python/geoarrow-io/Cargo.toml
           sccache: "true"
 
       - name: Install built wheel - ${{ matrix.platform.target }}
