@@ -30,7 +30,7 @@ fn check_debug_build(py: Python) -> PyResult<()> {
 }
 
 /// A Python module implemented in Rust.
-#[pymodule]
+#[pymodule(gil_used = false)]
 fn _rust(py: Python, m: &Bound<PyModule>) -> PyResult<()> {
     check_debug_build(py)?;
     m.add_wrapped(wrap_pyfunction!(___version))?;

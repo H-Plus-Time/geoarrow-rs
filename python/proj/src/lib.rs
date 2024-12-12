@@ -8,7 +8,7 @@ fn ___version() -> &'static str {
 }
 
 /// A Python module implemented in Rust.
-#[pymodule]
+#[pymodule(gil_used = false)]
 fn _rust_proj(_py: Python, m: &PyModule) -> PyResult<()> {
     m.add_wrapped(wrap_pyfunction!(___version))?;
 

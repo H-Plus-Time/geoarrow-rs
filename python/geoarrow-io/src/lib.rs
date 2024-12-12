@@ -1,3 +1,4 @@
+#![feature(once_cell_try)]
 use pyo3::exceptions::PyRuntimeWarning;
 use pyo3::intern;
 use pyo3::prelude::*;
@@ -32,7 +33,7 @@ fn check_debug_build(py: Python) -> PyResult<()> {
 }
 
 /// A Python module implemented in Rust.
-#[pymodule]
+#[pymodule(gil_used = false)]
 fn _io(py: Python, m: &Bound<PyModule>) -> PyResult<()> {
     check_debug_build(py)?;
     m.add_wrapped(wrap_pyfunction!(___version))?;
